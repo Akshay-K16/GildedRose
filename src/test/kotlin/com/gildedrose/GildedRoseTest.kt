@@ -14,7 +14,7 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testUpdateDecreasesQualityNormal() {
+    fun testUpdateDecreasesQualityIfUnexpired() {
         val items = listOf(Item("Elixir of the Mongoose", 10, 10))
         val app = GildedRose(items)
         app.updateQuality()
@@ -22,7 +22,7 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testUpdateDecreasesQualityExpired() {
+    fun testUpdateDecreasesQualityIfExpired() {
         val items = listOf(Item("Elixir of the Mongoose", -5, 10))
         val app = GildedRose(items)
         app.updateQuality()
@@ -30,7 +30,7 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testUpdateDecreasesQualityBorderlineExpired() {
+    fun testUpdateDecreasesQualityIfBorderlineExpired() {
         val items = listOf(Item("Elixir of the Mongoose", 0, 10))
         val app = GildedRose(items)
         app.updateQuality()
@@ -38,7 +38,7 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testQualityNeverNegativeNormal() {
+    fun testQualityNeverNegativeIfUnexpired() {
         val items = listOf(Item("Elixir of the Mongoose", 10, 0))
         val app = GildedRose(items)
         app.updateQuality()
@@ -46,7 +46,7 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testQualityNeverNegativeExpired() {
+    fun testQualityNeverNegativeIfExpired() {
         val items = listOf(Item("Elixir of the Mongoose", -5, 1))
         val app = GildedRose(items)
         app.updateQuality()
@@ -54,7 +54,7 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testUpdateBrieIncreasesQualityNormal() {
+    fun testUpdateBrieIncreasesQualityIfUnexpired() {
         val items = listOf(Item("Aged Brie", 10, 10))
         val app = GildedRose(items)
         app.updateQuality()
@@ -62,7 +62,7 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testUpdateBrieIncreasesQualityExpired() {
+    fun testUpdateBrieIncreasesQualityIfExpired() {
         val items = listOf(Item("Aged Brie", -5, 10))
         val app = GildedRose(items)
         app.updateQuality()
@@ -70,7 +70,7 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testUpdateBrieIncreasesQualityBorderlineExpired() {
+    fun testUpdateBrieIncreasesQualityIfBorderlineExpired() {
         val items = listOf(Item("Aged Brie", 0, 10))
         val app = GildedRose(items)
         app.updateQuality()
@@ -78,7 +78,7 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testBrieQualityNeverExceedsFiftyNormal() {
+    fun testBrieQualityNeverExceedsFiftyIfUnexpired() {
         val items = listOf(Item("Aged Brie", 10, 50))
         val app = GildedRose(items)
         app.updateQuality()
@@ -86,7 +86,7 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testBrieQualityNeverExceedsFiftyExpired() {
+    fun testBrieQualityNeverExceedsFiftyIfExpired() {
         val items = listOf(Item("Aged Brie", -5, 49))
         val app = GildedRose(items)
         app.updateQuality()
@@ -94,7 +94,7 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testUpdatePassIncreasesQualityNormal() {
+    fun testUpdatePassIncreasesQualityIfUnexpired() {
         val items = listOf(Item("Backstage passes to a TAFKAL80ETC concert", 20, 10))
         val app = GildedRose(items)
         app.updateQuality()
@@ -102,7 +102,7 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testUpdatePassIncreasesQualityTenDays() {
+    fun testUpdatePassIncreasesQualityWithTenDays() {
         val items = listOf(Item("Backstage passes to a TAFKAL80ETC concert", 10, 10))
         val app = GildedRose(items)
         app.updateQuality()
@@ -110,7 +110,7 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testUpdatePassIncreasesQualityEightDays() {
+    fun testUpdatePassIncreasesQualityWithEightDays() {
         val items = listOf(Item("Backstage passes to a TAFKAL80ETC concert", 8, 10))
         val app = GildedRose(items)
         app.updateQuality()
@@ -118,7 +118,7 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testUpdatePassIncreasesQualityFiveDays() {
+    fun testUpdatePassIncreasesQualityWithFiveDays() {
         val items = listOf(Item("Backstage passes to a TAFKAL80ETC concert", 5, 10))
         val app = GildedRose(items)
         app.updateQuality()
@@ -126,7 +126,7 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testUpdatePassIncreasesQualityThreeDays() {
+    fun testUpdatePassIncreasesQualityWithThreeDays() {
         val items = listOf(Item("Backstage passes to a TAFKAL80ETC concert", 3, 10))
         val app = GildedRose(items)
         app.updateQuality()
@@ -134,7 +134,7 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testUpdatePassExpired() {
+    fun testUpdatePassIfExpired() {
         val items = listOf(Item("Backstage passes to a TAFKAL80ETC concert", 0, 10))
         val app = GildedRose(items)
         app.updateQuality()
@@ -142,7 +142,7 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testPassQualityNeverExceedsFiftyNormal() {
+    fun testPassQualityNeverExceedsFiftyIfUnexpired() {
         val items = listOf(Item("Backstage passes to a TAFKAL80ETC concert", 20, 50))
         val app = GildedRose(items)
         app.updateQuality()
@@ -150,7 +150,7 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testPassQualityNeverExceedsFiftyTenDays() {
+    fun testPassQualityNeverExceedsFiftyWithTenDays() {
         val items = listOf(Item("Backstage passes to a TAFKAL80ETC concert", 10, 49))
         val app = GildedRose(items)
         app.updateQuality()
@@ -158,7 +158,7 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testPassQualityNeverExceedsFiftyFiveDays() {
+    fun testPassQualityNeverExceedsFiftyWithFiveDays() {
         val items = listOf(Item("Backstage passes to a TAFKAL80ETC concert", 5, 48))
         val app = GildedRose(items)
         app.updateQuality()
@@ -166,37 +166,55 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testUpdateLeavesSulfurasUnchangedNormal() {
+    fun testUpdateLeavesSulfurasQualityUnchangedIfUnexpired() {
         val items = listOf(Item("Sulfuras, Hand of Ragnaros", 10, 80))
         val app = GildedRose(items)
         app.updateQuality()
-        assertEquals(items[0].name, app.items[0].name)
         assertEquals(items[0].quality, app.items[0].quality)
+    }
+
+    @Test
+    fun testUpdateLeavesSulfurasSellInUnchangedIfUnexpired() {
+        val items = listOf(Item("Sulfuras, Hand of Ragnaros", 10, 80))
+        val app = GildedRose(items)
+        app.updateQuality()
         assertEquals(items[0].sellIn, app.items[0].sellIn)
     }
 
     @Test
-    fun testUpdateLeavesSulfurasUnchangedExpired() {
+    fun testUpdateLeavesSulfurasQualityUnchangedIfExpired() {
         val items = listOf(Item("Sulfuras, Hand of Ragnaros", 0, 80))
         val app = GildedRose(items)
         app.updateQuality()
-        assertEquals(items[0].name, app.items[0].name)
         assertEquals(items[0].quality, app.items[0].quality)
+    }
+
+    @Test
+    fun testUpdateLeavesSulfurasSellInUnchangedIfExpired() {
+        val items = listOf(Item("Sulfuras, Hand of Ragnaros", 0, 80))
+        val app = GildedRose(items)
+        app.updateQuality()
         assertEquals(items[0].sellIn, app.items[0].sellIn)
     }
 
     @Test
-    fun testUpdateLeavesSulfurasUnchangedBorderlineExpired() {
+    fun testUpdateLeavesSulfurasQualityUnchangedIfBorderlineExpired() {
         val items = listOf(Item("Sulfuras, Hand of Ragnaros", -10, 80))
         val app = GildedRose(items)
         app.updateQuality()
-        assertEquals(items[0].name, app.items[0].name)
         assertEquals(items[0].quality, app.items[0].quality)
+    }
+
+    @Test
+    fun testUpdateLeavesSulfurasSellInUnchangedIfBorderlineExpired() {
+        val items = listOf(Item("Sulfuras, Hand of Ragnaros", -10, 80))
+        val app = GildedRose(items)
+        app.updateQuality()
         assertEquals(items[0].sellIn, app.items[0].sellIn)
     }
 
     @Test
-    fun testUpdateConjuredNormal() {
+    fun testUpdateConjuredIfUnexpired() {
         val items = listOf(Item("Conjured Mana Cake", 10, 10))
         val app = GildedRose(items)
         app.updateQuality()
@@ -204,7 +222,7 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testUpdateConjuredBorderlineExpired() {
+    fun testUpdateConjuredIfBorderlineExpired() {
         val items = listOf(Item("Conjured Mana Cake", 0, 10))
         val app = GildedRose(items)
         app.updateQuality()
@@ -212,7 +230,7 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testUpdateConjuredExpired() {
+    fun testUpdateConjuredIfExpired() {
         val items = listOf(Item("Conjured Mana Cake", -5, 10))
         val app = GildedRose(items)
         app.updateQuality()
@@ -220,7 +238,7 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testConjuredQualityNeverNegativeNormal() {
+    fun testConjuredQualityNeverNegativeIfUnexpired() {
         val items = listOf(Item("Conjured Mana Cake", 10, 1))
         val app = GildedRose(items)
         app.updateQuality()
@@ -228,7 +246,7 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun testConjuredQualityNeverNegativeExpired() {
+    fun testConjuredQualityNeverNegativeIfExpired() {
         val items = listOf(Item("Conjured Mana Cake", 0, 3))
         val app = GildedRose(items)
         app.updateQuality()
